@@ -1,5 +1,6 @@
 import React from "react";
 import { SubmitDemoURL } from "../backend-services";
+import "./../App.css";
 
 const SubmitDemo = ({ token, demoURL, setDemoURL }) => {
   const handleSubmit = async () => {
@@ -12,14 +13,16 @@ const SubmitDemo = ({ token, demoURL, setDemoURL }) => {
   };
 
   return (
-    <div>
+    <div className="submit">
       <input
         type="text"
         value={demoURL}
         onChange={(e) => setDemoURL(e.target.value)}
         placeholder="Demo URL"
       />
-      <button onClick={handleSubmit}>Submit Demo URL</button>
+      <button style={{ marginTop: 20 }} onClick={handleSubmit}>
+        Submit Demo URL
+      </button>
     </div>
   );
 };
