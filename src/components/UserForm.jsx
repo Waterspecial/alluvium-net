@@ -1,23 +1,7 @@
-import React, { useState } from "react";
-import { submitUserInfo } from "../backend-services";
+import React from "react";
 import "./../App.css";
 
-const UserForm = ({ setStats, userInfo, setUserInfo }) => {
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const res = await submitUserInfo(userInfo);
-      setStats(res);
-    } catch (error) {
-      console.error("Error submitting user info:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+const UserForm = ({ handleSubmit, loading, userInfo, setUserInfo }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
