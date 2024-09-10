@@ -5,8 +5,7 @@ import "./../App.css";
 const SubmitDemo = ({ token, demoURL, setDemoURL }) => {
   const handleSubmit = async () => {
     try {
-      const res = await SubmitDemoURL(token, demoURL);
-      console.log(res);
+      const res = await SubmitDemoURL(demoURL);
     } catch (error) {
       console.error("Error submitting demo URL:", error);
     }

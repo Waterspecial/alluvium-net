@@ -22,7 +22,9 @@ export const submitUserInfo = async (userInfo) => {
 };
 export const SubmitDemoURL = async (demoUrl) => {
   try {
-    const res = await axiosInstance.post(`/submit_demo_url`, demoUrl);
+    const res = await axiosInstance.post(
+      `/submit_demo_url?demo_url=${demoUrl}`
+    );
     return res;
   } catch (error) {
     console.error("Error submitting user info:", error);
