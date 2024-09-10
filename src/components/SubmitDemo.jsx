@@ -1,0 +1,27 @@
+import React from "react";
+import { SubmitDemoURL } from "../backend-services";
+
+const SubmitDemo = ({ token, demoURL, setDemoURL }) => {
+  const handleSubmit = async () => {
+    try {
+      const res = await SubmitDemoURL(token, demoURL);
+      console.log(res);
+    } catch (error) {
+      console.error("Error submitting demo URL:", error);
+    }
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={demoURL}
+        onChange={(e) => setDemoURL(e.target.value)}
+        placeholder="Demo URL"
+      />
+      <button onClick={handleSubmit}>Submit Demo URL</button>
+    </div>
+  );
+};
+
+export default SubmitDemo;

@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import UserForm from "./components/UserForm";
+import { getApiToken } from "./backend-services";
+import InfoChart from "./components/InfoChart";
+import SubmitDemo from "./components/SubmitDemo";
 
-function App() {
+const App = () => {
+  const [token, setToken] = useState("");
+  const [userInfo, setUserInfo] = useState({
+    name: "",
+    email: "",
+    portfolio_url: "",
+  });
+  const [stats, setStats] = useState();
+  const [demoURL, setDemoURL] = useState("");
+
+  const handleTokenGeneration = async () => {
+    const res = await getApiToken();
+    console.log(res);
+    // setToken()
+  };
+
+  useEffect(() => {
+    handleTokenGeneration();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Alluvium Net</h1>
+      <UserForm token={token} userInfo={userInfo} setUserInfo={setUserInfo} />
+      <InfoChart stats={stats} />
+      <SubmitDemo token={token} demoURL={demoURL} setDemoURL={setDemoURL} />
     </div>
   );
-}
+};
 
 export default App;
