@@ -23,7 +23,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>Alluvium Net</h1>
+      <h1>Alluvium Frontend Developer Test</h1>
       <UserForm
         userInfo={userInfo}
         setUserInfo={setUserInfo}
